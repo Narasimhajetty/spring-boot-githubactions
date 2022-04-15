@@ -44,20 +44,11 @@ jobs:
          name: Package
          path: staging    
 
-  deploy:
-    name: Push Artifact to Ec2
-    runs-on: ubuntu-latest
-    needs: [pack_and_stage]
-    
-    steps:
-      - name: Checkout the code
-        uses: actions/checkout@v1
-
-      - name: Deploy to my EC2 instance
-        uses: easingthemes/ssh-deploy@v2.1.5
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-          SOURCE: "./staging"
-          REMOTE_HOST: "ec2-65-0-139-63.ap-south-1.compute.amazonaws.com"
-          REMOTE_USER: "ec2-user"
-          TARGET: "/home/ubuntu/git-actions"
+     - name: Deploy to my EC2 instance
+       uses: easingthemes/ssh-deploy@v2.1.5
+       env:
+         SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+         SOURCE: "./staging"
+         REMOTE_HOST: "ec2-65-0-139-63.ap-south-1.compute.amazonaws.com"
+         REMOTE_USER: "ec2-user"
+         TARGET: "/home/ubuntu/git-actions"
