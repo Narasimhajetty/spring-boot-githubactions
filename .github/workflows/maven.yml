@@ -36,7 +36,7 @@ jobs:
         uses: easingthemes/ssh-deploy@v2.1.5
         env:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-          SOURCE: "./"
+          SOURCE: "/home/runner/work/spring-boot-githubactions/spring-boot-githubactions/target"
           REMOTE_HOST: "ec2-65-0-19-244.ap-south-1.compute.amazonaws.com"
           REMOTE_USER: "ubuntu"
           TARGET: "/home/ubuntu/git-actions"
