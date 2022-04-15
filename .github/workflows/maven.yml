@@ -25,5 +25,7 @@ jobs:
 
     - name: Build project with Maven
       run: mvn -B package --file pom.xml
+    - name: Execute jar file
+      run: sudo java -jar /home/ubuntu/actions-runner/_work/spring-boot-githubactions/spring-boot-githubactions/target/springboot-0.0.1-SNAPSHOT.jar &
       
   
