@@ -44,8 +44,6 @@ jobs:
          name: Package
          path: staging    
 
-     - name: Deploy to my EC2 instance
-       uses: easingthemes/ssh-deploy@v2.1.5
        env:
          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
          SOURCE: "/home/runner/work/spring-boot-githubactions/spring-boot-githubactions/staging"
