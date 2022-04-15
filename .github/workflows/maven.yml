@@ -26,7 +26,7 @@ jobs:
     - name: Build project with Maven
       run: mvn -B package --file pom.xml
       
-  pack_and_stage:
+  pack_and_deploy:
 
      runs-on: ubuntu-latest
      needs: [build_and_test]
@@ -48,7 +48,7 @@ jobs:
        uses: easingthemes/ssh-deploy@v2.1.5
        env:
          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-         SOURCE: "./staging"
+         SOURCE: "/home/runner/work/spring-boot-githubactions/spring-boot-githubactions/staging"
          REMOTE_HOST: "ec2-65-0-139-63.ap-south-1.compute.amazonaws.com"
          REMOTE_USER: "ec2-user"
          TARGET: "/home/ubuntu/git-actions"
