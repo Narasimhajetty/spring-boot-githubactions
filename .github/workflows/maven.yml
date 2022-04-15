@@ -43,3 +43,21 @@ jobs:
        with:
          name: Package
          path: staging    
+
+  deploy:
+    name: Push Artifact to Ec2
+    runs-on: ubuntu-latest
+    needs: [build_and_test]
+    
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v1
+
+      - name: Deploy to my EC2 instance
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          SOURCE: "/home/runner/work/spring-boot-githubactions/spring-boot-githubactions/staging"
+          REMOTE_HOST: "ec2-65-0-139-63.ap-south-1.compute.amazonaws.com"
+          REMOTE_USER: "ec2-user"
+          TARGET: "/home/ubuntu/git-actions"
