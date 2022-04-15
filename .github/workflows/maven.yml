@@ -25,7 +25,23 @@ jobs:
 
     - name: Build project with Maven
       run: mvn -B package --file pom.xml
-    - name: Execute jar file
-      run: sudo java -jar /home/ubuntu/actions-runner/_work/spring-boot-githubactions/spring-boot-githubactions/target/springboot-0.0.1-SNAPSHOT.jar &
+      
+  deploy:
+    name: Push to EC2 Instance
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v1
+
+      - name: Deploy to my EC2 instance
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          SOURCE: "./"
+          REMOTE_HOST: "ec2-65-0-19-244.ap-south-1.compute.amazonaws.com"
+          REMOTE_USER: "ubuntu"
+          TARGET: "/home/ubuntu/git-actions"
+
       
   
