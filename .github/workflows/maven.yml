@@ -42,11 +42,14 @@ jobs:
      - uses: actions/upload-artifact@v2
        with:
          name: Package
-         path: staging    
-
-       env:
-         SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-         SOURCE: "/home/runner/work/spring-boot-githubactions/spring-boot-githubactions/staging"
-         REMOTE_HOST: "ec2-65-0-139-63.ap-south-1.compute.amazonaws.com"
-         REMOTE_USER: "ec2-user"
-         TARGET: "/home/ubuntu/git-actions"
+         path: staging   
+         
+     deploy:
+      name: Push to EC2 Instance
+      runs-on: ubuntu-latest
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+        SOURCE: "/home/runner/work/spring-boot-githubactions/spring-boot-githubactions/staging"
+        REMOTE_HOST: "ec2-65-0-139-63.ap-south-1.compute.amazonaws.com"
+        REMOTE_USER: "ec2-user"
+        TARGET: "/home/ubuntu/git-actions"
