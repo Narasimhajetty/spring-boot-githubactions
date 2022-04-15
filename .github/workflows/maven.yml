@@ -2,7 +2,7 @@ name: CI/CD worlflow for NDSL PAN verification
 
 on:
  push:
-    branches: [ master ]
+    branches: [ main ]
   
 jobs:
   build_and_test:
