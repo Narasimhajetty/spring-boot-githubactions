@@ -44,7 +44,7 @@ jobs:
          name: Package
          path: staging   
          
-     deploy:
+  deploy:
       name: Push to EC2 Instance
       runs-on: ubuntu-latest
       env:
