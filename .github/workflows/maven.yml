@@ -1,4 +1,4 @@
-name: Maven CI/CD
+name: CI/CD worlflow for NDSL PAN verification
 
 on:
  push:
