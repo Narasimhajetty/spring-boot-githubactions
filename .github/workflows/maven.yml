@@ -57,7 +57,7 @@ jobs:
         uses: easingthemes/ssh-deploy@v2.1.5
         env:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-          SOURCE: "/home/runner/work/spring-boot-githubactions/spring-boot-githubactions/staging/springboot-0.0.1-SNAPSHOT.jar"
+          SOURCE: "./staging"
           REMOTE_HOST: "ec2-65-0-139-63.ap-south-1.compute.amazonaws.com"
           REMOTE_USER: "ec2-user"
           TARGET: "/home/ubuntu/git-actions"
