@@ -8,10 +8,7 @@ jobs:
   deploy:
     name: Build & Deploy
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./nsdl_pan_wrapper
-
+    
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
