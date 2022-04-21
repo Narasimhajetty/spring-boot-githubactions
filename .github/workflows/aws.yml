@@ -39,5 +39,11 @@ jobs:
       env:
         ECR_REGISTRY: 654400775970.dkr.ecr.ap-south-1.amazonaws.com
         ECR_REPOSITORY: co-repo
-        IMAGE_TAG: ${{ github.sha }}  
+        IMAGE_TAG: latest 
+      run: |
+          # Build a docker container and push it to ECR 
+          docker build -t 654400775970.dkr.ecr.ap-south-1.amazonaws.com/co-repo:latest .
+          echo "Pushing image to ECR..."
+          docker push 654400775970.dkr.ecr.ap-south-1.amazonaws.com/co-repo:latest
+          echo "::set-output name=image::654400775970.dkr.ecr.ap-south-1.amazonaws.com/co-repo:latest"  
    
