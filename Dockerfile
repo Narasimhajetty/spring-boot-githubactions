@@ -7,9 +7,9 @@
 # Copy everything from local machine to our server, second dot refers to the directory on the container.
  COPY . .
 # install npm dependencies
- RUN maven install
+ RUN mvn install
 # lets build the application
- RUN maven build
+ RUN mvn clean install
  
  # # start an application (starting our react server)
- CMD ["maven", "run", "start"]
+ CMD ["mvn", "run", "start"]
