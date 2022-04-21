@@ -7,7 +7,7 @@
 # Copy everything from local machine to our server, second dot refers to the directory on the container.
  COPY . .
 # install npm dependencies
- RUN sudo apt-get install -y maven
+ RUN apt-get install -y maven
 # lets build the application
  RUN mvn clean install
  
